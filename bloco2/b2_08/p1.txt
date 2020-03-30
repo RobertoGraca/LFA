@@ -1,4 +1,5 @@
 // p1.txt
+
 print 1/4;  // escreve na consola a fracção 1/4
 print 3;    // escreve na consola a fracção 3
 3/4 -> x;   // guarda a fracção 3/4 na variável x

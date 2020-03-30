@@ -17,7 +17,7 @@ public class FracParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
-		T__9=10, T__10=11, Integer=12, ID=13, NEWLINE=14, WS=15, COMMENT=16;
+		T__9=10, T__10=11, Integer=12, NEWLINE=13, WS=14, COMMENT=15, ID=16;
 	public static final int
 		RULE_program = 0, RULE_stat = 1, RULE_assignement = 2, RULE_print = 3, 
 		RULE_expr = 4;
@@ -30,15 +30,15 @@ public class FracParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "';'", "'->'", "'print'", "'+'", "'-'", "'*'", "':'", "'%'", "'('", 
-			"')'", "'/'"
+			null, "';'", "'->'", "'print'", "'+'", "'-'", "'/'", "'*'", "':'", "'%'", 
+			"'('", "')'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, null, null, null, null, null, null, null, null, null, null, null, 
-			"Integer", "ID", "NEWLINE", "WS", "COMMENT"
+			"Integer", "NEWLINE", "WS", "COMMENT", "ID"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -129,7 +129,7 @@ public class FracParser extends Parser {
 			setState(13);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__2) | (1L << T__3) | (1L << T__4) | (1L << T__8) | (1L << Integer) | (1L << ID))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__2) | (1L << T__3) | (1L << T__4) | (1L << T__9) | (1L << Integer) | (1L << NEWLINE) | (1L << ID))) != 0)) {
 				{
 				{
 				setState(10);
@@ -232,9 +232,9 @@ public class FracParser extends Parser {
 		enterRule(_localctx, 2, RULE_stat);
 		int _la;
 		try {
-			setState(33);
+			setState(39);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
 			case 1:
 				_localctx = new ExpressionContext(_localctx);
 				enterOuterAlt(_localctx, 1);
@@ -242,16 +242,24 @@ public class FracParser extends Parser {
 				setState(19);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__4) | (1L << T__8) | (1L << Integer) | (1L << ID))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__4) | (1L << T__9) | (1L << Integer) | (1L << ID))) != 0)) {
 					{
 					setState(18);
 					expr(0);
 					}
 				}
 
-				setState(21);
-				match(T__0);
 				setState(22);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				if (_la==T__0) {
+					{
+					setState(21);
+					match(T__0);
+					}
+				}
+
+				setState(24);
 				match(NEWLINE);
 				}
 				break;
@@ -259,19 +267,27 @@ public class FracParser extends Parser {
 				_localctx = new VariableContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(24);
+				setState(26);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__4) | (1L << T__8) | (1L << Integer) | (1L << ID))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__4) | (1L << T__9) | (1L << Integer) | (1L << ID))) != 0)) {
 					{
-					setState(23);
+					setState(25);
 					assignement();
 					}
 				}
 
-				setState(26);
-				match(T__0);
-				setState(27);
+				setState(29);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				if (_la==T__0) {
+					{
+					setState(28);
+					match(T__0);
+					}
+				}
+
+				setState(31);
 				match(NEWLINE);
 				}
 				break;
@@ -279,19 +295,27 @@ public class FracParser extends Parser {
 				_localctx = new PrintFracContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(29);
+				setState(33);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				if (_la==T__2) {
 					{
-					setState(28);
+					setState(32);
 					print();
 					}
 				}
 
-				setState(31);
-				match(T__0);
-				setState(32);
+				setState(36);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				if (_la==T__0) {
+					{
+					setState(35);
+					match(T__0);
+					}
+				}
+
+				setState(38);
 				match(NEWLINE);
 				}
 				break;
@@ -338,11 +362,11 @@ public class FracParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(35);
+			setState(41);
 			expr(0);
-			setState(36);
+			setState(42);
 			match(T__1);
-			setState(37);
+			setState(43);
 			match(ID);
 			}
 		}
@@ -386,9 +410,9 @@ public class FracParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(39);
+			setState(45);
 			match(T__2);
-			setState(40);
+			setState(46);
 			expr(0);
 			}
 		}
@@ -570,16 +594,16 @@ public class FracParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(54);
+			setState(60);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,8,_ctx) ) {
 			case 1:
 				{
 				_localctx = new ExprIntegerSignalContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
-				setState(43);
+				setState(49);
 				((ExprIntegerSignalContext)_localctx).op = _input.LT(1);
 				_la = _input.LA(1);
 				if ( !(_la==T__3 || _la==T__4) ) {
@@ -590,43 +614,43 @@ public class FracParser extends Parser {
 					_errHandler.reportMatch(this);
 					consume();
 				}
-				setState(44);
+				setState(50);
 				expr(7);
 				}
 				break;
 			case 2:
 				{
-				_localctx = new ExprIntegerContext(_localctx);
+				_localctx = new ExprFracContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(45);
+				setState(51);
+				match(Integer);
+				setState(52);
+				match(T__5);
+				setState(53);
 				match(Integer);
 				}
 				break;
 			case 3:
 				{
-				_localctx = new ExprParentContext(_localctx);
+				_localctx = new ExprIntegerContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(46);
-				match(T__8);
-				setState(47);
-				expr(0);
-				setState(48);
-				match(T__9);
+				setState(54);
+				match(Integer);
 				}
 				break;
 			case 4:
 				{
-				_localctx = new ExprFracContext(_localctx);
+				_localctx = new ExprParentContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(50);
-				match(Integer);
-				setState(51);
+				setState(55);
+				match(T__9);
+				setState(56);
+				expr(0);
+				setState(57);
 				match(T__10);
-				setState(52);
-				match(Integer);
 				}
 				break;
 			case 5:
@@ -634,33 +658,33 @@ public class FracParser extends Parser {
 				_localctx = new ExprIDContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(53);
+				setState(59);
 				match(ID);
 				}
 				break;
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(64);
+			setState(70);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,10,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(62);
+					setState(68);
 					_errHandler.sync(this);
-					switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
+					switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
 					case 1:
 						{
 						_localctx = new ExprMultDivModContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(56);
-						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
-						setState(57);
+						setState(62);
+						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
+						setState(63);
 						((ExprMultDivModContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
-						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__6) | (1L << T__7))) != 0)) ) {
+						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__6) | (1L << T__7) | (1L << T__8))) != 0)) ) {
 							((ExprMultDivModContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 						}
 						else {
@@ -668,17 +692,17 @@ public class FracParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(58);
-						expr(7);
+						setState(64);
+						expr(6);
 						}
 						break;
 					case 2:
 						{
 						_localctx = new ExprAddSubContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(59);
-						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
-						setState(60);
+						setState(65);
+						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
+						setState(66);
 						((ExprAddSubContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !(_la==T__3 || _la==T__4) ) {
@@ -689,16 +713,16 @@ public class FracParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(61);
-						expr(6);
+						setState(67);
+						expr(5);
 						}
 						break;
 					}
 					} 
 				}
-				setState(66);
+				setState(72);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,10,_ctx);
 			}
 			}
 		}
@@ -723,33 +747,35 @@ public class FracParser extends Parser {
 	private boolean expr_sempred(ExprContext _localctx, int predIndex) {
 		switch (predIndex) {
 		case 0:
-			return precpred(_ctx, 6);
-		case 1:
 			return precpred(_ctx, 5);
+		case 1:
+			return precpred(_ctx, 4);
 		}
 		return true;
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\22F\4\2\t\2\4\3\t"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\22L\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\3\2\7\2\16\n\2\f\2\16\2\21\13\2\3\2\3\2\3\3"+
-		"\5\3\26\n\3\3\3\3\3\3\3\5\3\33\n\3\3\3\3\3\3\3\5\3 \n\3\3\3\3\3\5\3$\n"+
-		"\3\3\4\3\4\3\4\3\4\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6"+
-		"\3\6\3\6\5\69\n\6\3\6\3\6\3\6\3\6\3\6\3\6\7\6A\n\6\f\6\16\6D\13\6\3\6"+
-		"\2\3\n\7\2\4\6\b\n\2\4\3\2\6\7\3\2\b\n\2L\2\17\3\2\2\2\4#\3\2\2\2\6%\3"+
-		"\2\2\2\b)\3\2\2\2\n8\3\2\2\2\f\16\5\4\3\2\r\f\3\2\2\2\16\21\3\2\2\2\17"+
-		"\r\3\2\2\2\17\20\3\2\2\2\20\22\3\2\2\2\21\17\3\2\2\2\22\23\7\2\2\3\23"+
-		"\3\3\2\2\2\24\26\5\n\6\2\25\24\3\2\2\2\25\26\3\2\2\2\26\27\3\2\2\2\27"+
-		"\30\7\3\2\2\30$\7\20\2\2\31\33\5\6\4\2\32\31\3\2\2\2\32\33\3\2\2\2\33"+
-		"\34\3\2\2\2\34\35\7\3\2\2\35$\7\20\2\2\36 \5\b\5\2\37\36\3\2\2\2\37 \3"+
-		"\2\2\2 !\3\2\2\2!\"\7\3\2\2\"$\7\20\2\2#\25\3\2\2\2#\32\3\2\2\2#\37\3"+
-		"\2\2\2$\5\3\2\2\2%&\5\n\6\2&\'\7\4\2\2\'(\7\17\2\2(\7\3\2\2\2)*\7\5\2"+
-		"\2*+\5\n\6\2+\t\3\2\2\2,-\b\6\1\2-.\t\2\2\2.9\5\n\6\t/9\7\16\2\2\60\61"+
-		"\7\13\2\2\61\62\5\n\6\2\62\63\7\f\2\2\639\3\2\2\2\64\65\7\16\2\2\65\66"+
-		"\7\r\2\2\669\7\16\2\2\679\7\17\2\28,\3\2\2\28/\3\2\2\28\60\3\2\2\28\64"+
-		"\3\2\2\28\67\3\2\2\29B\3\2\2\2:;\f\b\2\2;<\t\3\2\2<A\5\n\6\t=>\f\7\2\2"+
-		">?\t\2\2\2?A\5\n\6\b@:\3\2\2\2@=\3\2\2\2AD\3\2\2\2B@\3\2\2\2BC\3\2\2\2"+
-		"C\13\3\2\2\2DB\3\2\2\2\n\17\25\32\37#8@B";
+		"\5\3\26\n\3\3\3\5\3\31\n\3\3\3\3\3\5\3\35\n\3\3\3\5\3 \n\3\3\3\3\3\5\3"+
+		"$\n\3\3\3\5\3\'\n\3\3\3\5\3*\n\3\3\4\3\4\3\4\3\4\3\5\3\5\3\5\3\6\3\6\3"+
+		"\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\5\6?\n\6\3\6\3\6\3\6\3\6\3\6\3"+
+		"\6\7\6G\n\6\f\6\16\6J\13\6\3\6\2\3\n\7\2\4\6\b\n\2\4\3\2\6\7\3\2\t\13"+
+		"\2U\2\17\3\2\2\2\4)\3\2\2\2\6+\3\2\2\2\b/\3\2\2\2\n>\3\2\2\2\f\16\5\4"+
+		"\3\2\r\f\3\2\2\2\16\21\3\2\2\2\17\r\3\2\2\2\17\20\3\2\2\2\20\22\3\2\2"+
+		"\2\21\17\3\2\2\2\22\23\7\2\2\3\23\3\3\2\2\2\24\26\5\n\6\2\25\24\3\2\2"+
+		"\2\25\26\3\2\2\2\26\30\3\2\2\2\27\31\7\3\2\2\30\27\3\2\2\2\30\31\3\2\2"+
+		"\2\31\32\3\2\2\2\32*\7\17\2\2\33\35\5\6\4\2\34\33\3\2\2\2\34\35\3\2\2"+
+		"\2\35\37\3\2\2\2\36 \7\3\2\2\37\36\3\2\2\2\37 \3\2\2\2 !\3\2\2\2!*\7\17"+
+		"\2\2\"$\5\b\5\2#\"\3\2\2\2#$\3\2\2\2$&\3\2\2\2%\'\7\3\2\2&%\3\2\2\2&\'"+
+		"\3\2\2\2\'(\3\2\2\2(*\7\17\2\2)\25\3\2\2\2)\34\3\2\2\2)#\3\2\2\2*\5\3"+
+		"\2\2\2+,\5\n\6\2,-\7\4\2\2-.\7\22\2\2.\7\3\2\2\2/\60\7\5\2\2\60\61\5\n"+
+		"\6\2\61\t\3\2\2\2\62\63\b\6\1\2\63\64\t\2\2\2\64?\5\n\6\t\65\66\7\16\2"+
+		"\2\66\67\7\b\2\2\67?\7\16\2\28?\7\16\2\29:\7\f\2\2:;\5\n\6\2;<\7\r\2\2"+
+		"<?\3\2\2\2=?\7\22\2\2>\62\3\2\2\2>\65\3\2\2\2>8\3\2\2\2>9\3\2\2\2>=\3"+
+		"\2\2\2?H\3\2\2\2@A\f\7\2\2AB\t\3\2\2BG\5\n\6\bCD\f\6\2\2DE\t\2\2\2EG\5"+
+		"\n\6\7F@\3\2\2\2FC\3\2\2\2GJ\3\2\2\2HF\3\2\2\2HI\3\2\2\2I\13\3\2\2\2J"+
+		"H\3\2\2\2\r\17\25\30\34\37#&)>FH";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

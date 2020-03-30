@@ -7,7 +7,8 @@ public class Fraction{
 		this.n=n;
 		if(d==null)this.d = 1;
 		else if(d==0) throw new IllegalArgumentException("Divide by zero");
-		else this.d=d;
+		else {this.d=d;}
+		simplify();
 	}
 	
 	public Integer getN(){
@@ -75,5 +76,12 @@ public class Fraction{
 	
 	@Override public String toString(){
 		return (d==1)?n+"":n+"/"+d;
+	}
+	
+	private void simplify(){
+		if(this.d<0){
+			this.d = Math.abs(this.d);
+			this.n = -Math.abs(this.n);
+		}
 	}
 }

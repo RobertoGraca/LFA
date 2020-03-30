@@ -10,9 +10,9 @@ public class Interpreter extends FracBaseVisitor<Fraction> {
    }
 
    @Override public Fraction visitExpression(FracParser.ExpressionContext ctx) {
-      if(!ctx.expr().equals(null)){
+      if(ctx.expr()!=null){
 		  Fraction x = visit(ctx.expr());
-		  System.out.println("\nResultado = " + x.toString()); 
+		  //System.out.println("\nResultado = " + x.toString()); 
 		  return x;
 	  }
 	  return null;
@@ -28,8 +28,7 @@ public class Interpreter extends FracBaseVisitor<Fraction> {
 
    @Override public Fraction visitPrintFrac(FracParser.PrintFracContext ctx) {
       if(!ctx.print().equals(null)){
-		  Fraction a = visit(ctx.print());
-		  System.out.println((a.getD()==1)?a.getN()+"":a.getN()+"/"+a.getD()); 
+		  visit(ctx.print());
 	  }
 	  return null;
    }
@@ -41,13 +40,14 @@ public class Interpreter extends FracBaseVisitor<Fraction> {
    }
 
    @Override public Fraction visitPrint(FracParser.PrintContext ctx) {
-      return visit(ctx.expr());
+	   Fraction a = visit(ctx.expr());  
+	   System.out.println((a.getD()==1)?a.getN()+"":a.getN()+"/"+a.getD()); 
+	   return null;
+      
    }
 
    @Override public Fraction visitExprFrac(FracParser.ExprFracContext ctx) {
-	   Fraction a = visit(ctx.Integer(0));
-	   Fraction b = visit(ctx.Integer(1));
-	   return new Fraction(a.getN(),b.getN());
+	   return new Fraction(Integer.parseInt(ctx.Integer(0).getText()),Integer.parseInt(ctx.Integer(1).getText()));
    }
 
    @Override public Fraction visitExprAddSub(FracParser.ExprAddSubContext ctx) {
@@ -75,13 +75,7 @@ public class Interpreter extends FracBaseVisitor<Fraction> {
    }
 
    @Override public Fraction visitExprInteger(FracParser.ExprIntegerContext ctx) {
-      Fraction a = new Fraction(Integer.parseInt(ctx.getText()), null);
-      if(a==null){
-		  return new Fraction(1,1);
-	  }
-	  else{
-		  return a;
-	  }
+      return new Fraction(Integer.parseInt(ctx.getText()), null);
    }
 
    @Override public Fraction visitExprID(FracParser.ExprIDContext ctx) {
